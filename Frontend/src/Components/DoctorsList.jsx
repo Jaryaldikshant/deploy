@@ -30,7 +30,7 @@ const AllDoctors = [
     rating:5
   },
   {
-    name: "Dr. Himanshu Jain",
+    name: "Dr. Richa Jain",
     email: "vidursharma8035@gmail.com",
     age: 44,
     experience: 23,
@@ -42,7 +42,7 @@ const AllDoctors = [
     rating: 4
   },
   {
-    name: "Dr. Ruchi Jain",
+    name: "Dr. Dishant Jaryal",
     email: "vidursharma8035@gmail.com",
     age: 40,
     experience: 20,
@@ -66,7 +66,7 @@ const AllDoctors = [
     rating: 4
   },
   {
-    name: "Dr. Atul Arora",
+    name: "Dr. Japneet Arora",
     email: "vidursharma8035@gmail.com",
     age: 40,
     experience: 16,
@@ -90,7 +90,7 @@ const AllDoctors = [
     rating:4
   },
   {
-    name: "Dr. Laire Jamson",
+    name: "Dr. Lara Jamson",
     email: "vidursharma8035@gmail.com",
     age: 38,
     experience: 8,

@@ -1,231 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import './Consultancy.css';
-// import {getIssuesList, AllDoctors } from './DoctorsList';  // Import the doctor list
-// import { Navbars } from './Navbars';
-// import { useNavigate } from 'react-router-dom';
-// import { message } from 'antd';
-// import HospitalLogo from "../assets/doctors/Hospital_Logo.jpg";
-
-// const Consultancy = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     age: '',
-//     address: '',
-//     gender: '',
-//     doctor: '',
-//     disease: '',
-//     dateOfAppointment: '',
-//     timing: '',
-//     mobile: '',
-//     email: '',
-//     Fee: ''
-//   });
-//   const [error, setError] = useState('');
-//   const [availableDoctors, setAvailableDoctors] = useState([]); // To store doctors filtered by disease
-//   const [selectedDoctor, setSelectedDoctor] = useState(null);
-//   const [token, setToken] = useState('');
-//   const navigate = useNavigate();
-
-//   // Handle input changes
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-//   };
-
-//   // Handle disease selection
-//   const handleDiseaseChange = (e) => {
-//     const selectedDisease = e.target.value;
-//     setFormData((prevFormData) => ({
-//       ...prevFormData,
-//       disease: selectedDisease,
-//       doctor: '', // Reset doctor selection when disease changes
-//       Fee: ''     // Reset Fee when disease changes
-//     }));
-
-//     // Filter doctors based on the selected disease
-//     const doctorsForDisease = AllDoctors.filter(doctor => doctor.issues.includes(selectedDisease));
-//     setAvailableDoctors(doctorsForDisease);
-//   };
-
-//   // Handle doctor selection
-//   const handleDoctorChange = (e) => {
-//     const selectedDoctor = availableDoctors.find(doctor => doctor.name === e.target.value);
-//     setFormData((prevFormData) => ({
-//       ...prevFormData,
-//       doctor: e.target.value,
-//       Fee: selectedDoctor ? selectedDoctor.Fee : ''
-//     }));
-//     setSelectedDoctor(selectedDoctor);
-//   };
-
-//   // Handle form submission (booking appointment)
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     if (!selectedDoctor) {
-//       setError('Please select a doctor');
-//       return;
-//     }
-
-//     const newToken = Math.floor(1000 + Math.random() * 9000);
-//     setToken(newToken);
-
-//     // Proceed to automatic payment after booking
-//     handleAutomaticPayment(selectedDoctor, newToken);
-//     setError('');
-//   };
-
-//   // Automatically handle payment when appointment is confirmed
-//   const handleAutomaticPayment = (doctor, token) => {
-//     if (!window.Razorpay) {
-//       const script = document.createElement('script');
-//       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-//       script.async = true;
-//       document.body.appendChild(script);
-
-//       script.onload = () => {
-//         initiatePayment(doctor, token);
-//       };
-//     } else {
-//       initiatePayment(doctor, token);
-//     }
-//   };
-
-//   const initiatePayment = (doctor, token) => {
-//     const options = {
-//       key: 'rzp_test_GFDuCQAYS65RbS',  // Your Razorpay Key
-//       amount: formData.Fee * 100, // Convert Fee to paise (Razorpay requires amount in paise)
-//       currency: 'INR',
-//       name: 'Consultancy Portal',
-//       description: `Consultation Fee for Dr. ${doctor.name}`, // Dynamic doctor name in description
-//       image: 'https://example.com/logo.png',
-//       handler: function (response) {
-//         alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-//         navigate("/"); // Redirect to homepage or confirmation page
-//       },
-//       prefill: {
-//         name: formData.name,
-//         email: formData.email,
-//         contact: formData.mobile,
-//       },
-//       notes: {
-//         address: formData.address,
-//       },
-//       theme: {
-//         color: '#F37254',
-//       },
-//     };
-
-//     const razorpay = new window.Razorpay(options);
-//     razorpay.open();
-//   };
-
-//   const videoCallingHandler = () => {
-//     navigate("/videoCall");
-//   };
-
-//   return (
-//     <>
-//       <header>
-//         <img src={HospitalLogo} alt="Hospital-Logo" />
-//         <h1>Aarogya Hospital</h1>
-//       </header>
-
-//       <div className="navs"><Navbars /></div>
-//       <button className='videocalling' onClick={videoCallingHandler}>Start Video Call</button>
-//       <div className="thisbody">
-//         <p className="pageheading">Consultancy Portal</p>
-//         <div className="consultancy">
-//           <form onSubmit={handleSubmit}>
-//             <div className="form-container">
-//               <h3 className='h3tag'>Enter Your Details</h3>
-//               <div className="form-group">
-//                 <label>Name:</label>
-//                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Age:</label>
-//                 <input type="number" name="age" value={formData.age} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Address:</label>
-//                 <input type="text" name="address" value={formData.address} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Gender:</label>
-//                 <select name="gender" value={formData.gender} onChange={handleInputChange}>
-//                   <option value="">Select</option>
-//                   <option value="Male">Male</option>
-//                   <option value="Female">Female</option>
-//                 </select>
-//               </div>
-
-//               <div className="form-group">
-//                 <label>Select Disease:</label>
-//                 <select name="disease" value={formData.disease} onChange={handleDiseaseChange}>
-//                   <option value="">Select a disease</option>
-//                   {AllDoctors.map(doctor => doctor.issues).flat().map((disease, index) => (
-//                     <option key={index} value={disease}>{disease}</option>
-//                   ))}
-//                 </select>
-//               </div>
-
-//               <div className="form-group">
-//                 <label>Select Doctor:</label>
-//                 <select name="doctor" value={formData.doctor} onChange={handleDoctorChange} disabled={!formData.disease}>
-//                   <option value="">Select a doctor</option>
-//                   {availableDoctors.map(doctor => (
-//                     <option key={doctor.name} value={doctor.name}>
-//                       {doctor.name} - ₹{doctor.Fee}  {/* Displaying Fee with doctor's name */}
-//                     </option>
-//                   ))}
-//                 </select>
-//               </div>
-
-//               <div className="form-group">
-//                 <label>Doctor's Fee:</label>
-//                 <input type="text" name="Fee" value={formData.Fee || ''} readOnly />
-//               </div>
-
-//               <div className="form-group">
-//                 <label>Date of Appointment:</label>
-//                 <input type="date" name="dateOfAppointment" value={formData.dateOfAppointment} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Timing:</label>
-//                 <input type="time" name="timing" value={formData.timing} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Mobile:</label>
-//                 <input type="tel" name="mobile" value={formData.mobile} onChange={handleInputChange} />
-//               </div>
-//               <div className="form-group">
-//                 <label>Email:</label>
-//                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
-//               </div>
-//               <button type="submit">Book Appointment</button>
-//             </div>
-//           </form>
-//           {error && <p style={{ color: 'red' }}>{error}</p>}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Consultancy;
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import './Consultancy.css';
 import { useNavigate } from 'react-router-dom';
@@ -372,8 +144,7 @@ const Consultancy = () => {
           <h2>Welcome to Our<br/><marquee><span>Consultancy Services</span> </marquee></h2>
           <p>
             We are dedicated to providing expert medical advice and care tailored to
-            your needs.<br></br> Book an appointment with highly experienced doctors for a
-            range of specialties, all at your convenience.
+            your needs.Book an appointment with highly experienced doctors for a range of specialties, all at your convenience.
           </p>
         </div>
         <div className="intro-image">
@@ -386,7 +157,8 @@ const Consultancy = () => {
         </div>
       </div>
       <button className='videocalling' onClick={videoCallingHandler}>Start Video Call</button>
-
+        <br></br>
+      <div className="main-form">
       <div className="consultancy">
         <h2 className="pageheading">Consultancy Portal</h2>
         <form onSubmit={handleSubmit}>
@@ -515,10 +287,10 @@ const Consultancy = () => {
         </p>
         )}
       </div>
+      </div>
       <Footer />
     </>
   );
 };
 
 export default Consultancy;
-

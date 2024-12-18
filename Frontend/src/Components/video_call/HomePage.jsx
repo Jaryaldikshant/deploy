@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { useNavigate } from 'react-router-dom';
 import { Navbars } from '../Navbars';
+import { Footer } from '../Footer';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -13,8 +14,9 @@ const HomePage = () => {
   };
 
   return (
+    <>
+    <Navbars/>
     <div className="video-home-page">
-      <div className='video-navs'> <Navbars/></div>
       <div className="video-form-container">
         <h1 className="video-form-title">Enter Room Code</h1>
         <form onSubmit={handleFormSubmit}>
@@ -29,7 +31,10 @@ const HomePage = () => {
           <button type="submit" className="video-submit-btn">Enter Room</button>
         </form>
       </div>
+      
     </div>
+    <Footer/>
+    </>
   );
 };
 

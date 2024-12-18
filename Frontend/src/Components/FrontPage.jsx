@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './FrontPage.css'; // Ensure to import your CSS file
 import HospitalImage from '../assets/Front_Images/Hospital.png';
 import NeurologyImage from '../assets/Front_Images/Neurology.png';
@@ -11,25 +11,26 @@ import OncologyImage from '../assets/Front_Images/Oncology.png';
 import GastroenterologyImage from '../assets/Front_Images/Gastroenterology.png';
 import EndocrionolgyImage from '../assets/Front_Images/Endocrionolgy.png';
 import OphthalmologyImage from '../assets/Front_Images/Ophthalmology.png';
-import {Navbars} from './Navbars';
+import { Navbars } from './Navbars';
 import UserInfo from './UserInfo';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import HospitalLogo from "../assets/HospitalFrontPage/HospitalLogo.jpg"
 import { Footer } from './Footer.jsx';
 import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'font-awesome/css/font-awesome.min.css';
-import Consultancy from './Consultancy'; 
+import Consultancy from './Consultancy';
 import TelephoneImage from '../assets/HospitalFrontPage/telephoneImg.webp';
 
 
 
 
 const FrontPage = () => {
-
+    const navigate = useNavigate();
     const handleButtonClick = () => {
-        window.open('/consultancy', '_blank');   // Show Consultancy component when button is clicked
+        
+        navigate('/Consultancy')  ; // Show Consultancy component when button is clicked
     };
     const testimonials = [
         { quote: "The doctors and staff are incredibly supportive. They helped me through every step of my treatment.", name: "John Doe" },
@@ -47,15 +48,15 @@ const FrontPage = () => {
         autoplaySpeed: 4000,
         arrows: false,
     };
-    const BookAppointment = () =>{
-        const navigate=useNavigate();
-    const onClickConsultancy = () =>{
-        navigate("/Consultancy");
+    const BookAppointment = () => {
+        const navigate = useNavigate();
+        const onClickConsultancy = () => {
+            navigate("/Consultancy");
+        }
     }
-}
     return (
         <div>
-            <Navbars/>
+            <Navbars />
             {/* Header */}
             <div className="hero-section">
                 <div className="hero-text">
@@ -67,30 +68,30 @@ const FrontPage = () => {
 
                 </div>
                 <img src={HospitalLogo} alt="Hospital Logo" className="hospital-logo" />
-            </div>   
+            </div>
             {/* Fmedical services*/}
             <div className="medical-services">
                 <h2>Providing the Best Medical Services</h2>
                 <div className="icons-container">
                     <div className="icon-card" id="find-doctor">
-                    <i className="fa fa-user-md" ></i>
-                    <span>Find a Doctor</span>
-                    <p>Search for certified medical professionals in your area.</p> {/* Paragraph added */}
+                        <i className="fa fa-user-md" ></i>
+                        <span>Find a Doctor</span>
+                        <p>Search for certified medical professionals in your area.</p> {/* Paragraph added */}
                     </div>
                     <div className="icon-card" id="find-location">
-                    <i className="fas fa-map-marker"></i>
-                    <span>Find a Location</span>
-                    <p>Locate nearby hospitals and clinics with ease.</p> {/* Paragraph added */}
+                        <i className="fas fa-map-marker"></i>
+                        <span>Find a Location</span>
+                        <p>Locate nearby hospitals and clinics with ease.</p> {/* Paragraph added */}
                     </div>
                     <div className="icon-card" id="book-appointment">
-                    <i className="fa fa-calendar-check"></i>
-                    <span>Book Appointment</span>
-                    <p>Schedule your appointments quickly and hassle-free.</p> {/* Paragraph added */}
+                        <i className="fa fa-calendar-check"></i>
+                        <span>Book Appointment</span>
+                        <p>Schedule your appointments quickly and hassle-free.</p> {/* Paragraph added */}
                     </div>
                 </div>
-                </div>
+            </div>
 
-              {/* Treatments */}
+            {/* Treatments */}
             <div className="treatments">
                 <h2>Our Treatments</h2>
                 {/* <div className="card-container">
@@ -112,53 +113,53 @@ const FrontPage = () => {
                         </div>
                     ))}
                 </div> */}
-            <div className="card-container">
-                <Link to="/neurology" className="card">
-                    <img src={NeurologyImage} alt="Neurology" />
-                    <h3>Neurology</h3>
-                </Link>
-                <Link to="/dermatology" className="card">
-                    <img src={DermatologyImage} alt="Dermatology" />
-                    <h3>Dermatology</h3>
-                </Link>
-                <Link to="/cardiology" className="card">
-                    <img src={CardiologyImage} alt="Cardiology" />
-                    <h3>Cardiology</h3>
-                </Link>
-                <Link to="/orthopedics" className="card">
-                    <img src={OrthopedicsImage} alt="Orthopedics" />
-                    <h3>Oardiology</h3>
-                </Link>
-                <Link to="/endocrionology" className="card">
-                    <img src={EndocrionolgyImage} alt="Endocrionology" />
-                    <h3>Endocrinology</h3>
-                </Link>
-                <Link to="/gastroenterology" className="card">
-                    <img src={GastroenterologyImage} alt="Gastroenterology" />
-                    <h3>Gastroenterology</h3>
-                </Link>
-                <Link to="/oncology" className="card">
-                    <img src={OncologyImage} alt="Oncology" />
-                    <h3>Oncology</h3>
-                </Link>
-                <Link to="/gynecology" className="card">
-                    <img src={GynecologyImage} alt="Gynecology" />
-                    <h3>Gynecology</h3>
-                </Link>
-                <Link to="/pediatrics" className="card">
-                    <img src={PediatricsImage} alt="Pediatrics" />
-                    <h3>Pediatrics</h3>
-                </Link>
-                <Link to="/ophthalmology" className="card">
-                    <img src={OphthalmologyImage} alt="Ophthalmology" />
-                    <h3>Ophthalmology</h3>
-                </Link>
+                <div className="card-container">
+                    <Link to="/neurology" className="card">
+                        <img src={NeurologyImage} alt="Neurology" />
+                        <h3>Neurology</h3>
+                    </Link>
+                    <Link to="/dermatology" className="card">
+                        <img src={DermatologyImage} alt="Dermatology" />
+                        <h3>Dermatology</h3>
+                    </Link>
+                    <Link to="/cardiology" className="card">
+                        <img src={CardiologyImage} alt="Cardiology" />
+                        <h3>Cardiology</h3>
+                    </Link>
+                    <Link to="/orthopedics" className="card">
+                        <img src={OrthopedicsImage} alt="Orthopedics" />
+                        <h3>Oardiology</h3>
+                    </Link>
+                    <Link to="/endocrionology" className="card">
+                        <img src={EndocrionolgyImage} alt="Endocrionology" />
+                        <h3>Endocrinology</h3>
+                    </Link>
+                    <Link to="/gastroenterology" className="card">
+                        <img src={GastroenterologyImage} alt="Gastroenterology" />
+                        <h3>Gastroenterology</h3>
+                    </Link>
+                    <Link to="/oncology" className="card">
+                        <img src={OncologyImage} alt="Oncology" />
+                        <h3>Oncology</h3>
+                    </Link>
+                    <Link to="/gynecology" className="card">
+                        <img src={GynecologyImage} alt="Gynecology" />
+                        <h3>Gynecology</h3>
+                    </Link>
+                    <Link to="/pediatrics" className="card">
+                        <img src={PediatricsImage} alt="Pediatrics" />
+                        <h3>Pediatrics</h3>
+                    </Link>
+                    <Link to="/ophthalmology" className="card">
+                        <img src={OphthalmologyImage} alt="Ophthalmology" />
+                        <h3>Ophthalmology</h3>
+                    </Link>
                 </div>
 
 
 
 
-                    {/* {[
+                {/* {[
                         { name: 'Neurology', img: NeurologyImage },
                         { name: 'Orthopedics', img: OrthopedicsImage },
                         { name: 'Pediatrics', img: PediatricsImage },
@@ -174,17 +175,17 @@ const FrontPage = () => {
                             <img src={treatment.img} alt={treatment.name} />
                             <h3>{treatment.name}</h3>
                         </div> */}
-                    {/* ))} */}
-                
+                {/* ))} */}
+
 
 
 
                 {/* What our patient says */}
                 <div className="patient-testimonials">
                     <h2>What Our Patients Say</h2>
-                    <Slider 
-                        {...settings} 
-                        className="testimonials-slider" 
+                    <Slider
+                        {...settings}
+                        className="testimonials-slider"
                         autoplay={true} // This enables autoplay
                         autoplaySpeed={3000} // This sets the interval between slides (in milliseconds)
                     >
@@ -210,14 +211,15 @@ const FrontPage = () => {
                         <a href="/news-details" className="read-more">Read More</a>
                     </div>
                 </div>
-               
-               {/* contact */}
+
+                {/* contact */}
                 <div className="contact-us">
                     <h2>Contact Us</h2>
                     <div className="contact-content">
                         <div className="telephone-image">
                             <img src={TelephoneImage} alt="Telephone" />
                         </div>
+                        {/* <div className='cls'> */}
                         <form className="contact-form">
                             <label>Name</label>
                             <input type="text" placeholder="Your Name" />
@@ -230,6 +232,7 @@ const FrontPage = () => {
 
                             <button className="contact-button">Send Message</button>
                         </form>
+                        {/* </div> */}
                     </div>
                 </div>
 
@@ -238,7 +241,7 @@ const FrontPage = () => {
             </div>
             <Footer />
         </div>
-    
+
     );
 };
 

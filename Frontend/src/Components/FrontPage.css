@@ -9,15 +9,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 60px 20px;
-    background: #238e22;
+    background: linear-gradient(135deg, #0f8e2f, #fff);
     color: black;
     overflow: hidden;
     position: relative;
     animation: fadeInBackground 2s ease-in-out;
     
-}
-.card>img{
-    height: 160px;
 }
 
 .hero-section .hero-text {
@@ -39,17 +36,22 @@
     font-size: 1.2em;
     margin-bottom: 20px;
     line-height: 1.6;
+    color:#fff;
 }
 .appointment-button{
     margin-top: 20px;
     padding: 10px 20px;
     background: #fff;
-    /* color:#f3b219 ; */
-    color:#238e22 ;
+    color:#0f8e2f ;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s ease;    
+}
+
+.appointment-button:hover {
+    background-color: #0f8e2f;
+    color: #fff;
 }
 
 .hospital-logo {
@@ -80,12 +82,10 @@
 /* Keyframe Animations */
 @keyframes fadeInBackground {
     from {
-        /* background: linear-gradient(135deg, #238e22, #fff); */
-        background-color: #238e22;
+        background: linear-gradient(135deg, #0f8e2f, #fff);
     }
     to {
-        /* background: linear-gradient(135deg, #fff,#238e22); */
-           background-color: #238e22;
+        background: linear-gradient(135deg, #fff,#0f8e2f);
     }
 }
 
@@ -152,8 +152,7 @@
   
   .icon-card i {
     font-size: 3rem;
-    /* color: rgb(59, 157, 135);  */
-    color: #238e22;
+    color: #0f8e2f; /* Ensure the icon is visible */
   }
   
   
@@ -194,7 +193,6 @@
       width: 200px; /* Increase width slightly on small screens */
       padding: 20px;
     }
-    
   }
   
 /* cards */
@@ -232,7 +230,7 @@
 
 .card {
     background: #ffffff; /* White card background */
-    border: 2px solid #238e22; /* Parrot green border */
+    border: 2px solid #0f8e2f; /* Parrot green border */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -248,7 +246,7 @@
 
 .card h3 {
     margin: 10px 0;
-    color: #238e22; /* Parrot green for card headings */
+    color: #0f8e2f; /* Parrot green for card headings */
     font-weight: 700;
 }
 
@@ -340,10 +338,8 @@
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Adding hover effect */
-    border-left: 5px solid #238e22; /* Colorful left border */
-    
-    /* background: linear-gradient(135deg, #238e22, #fff); */
-    background: #238e22;
+    border-left: 5px solid #0f8e2f; /* Colorful left border */
+    background: linear-gradient(135deg, #0f8e2f, #fff);
 }
 
 /* Hover Effect on Cards */
@@ -365,15 +361,13 @@
 /* Paragraph of News Item */
 .news-item p {
     font-size: 1.1rem;
-    /* color: #555555; */
-    color: white;
+    color: #555555;
     margin-bottom: 15px;
 }
 
 /* Read More Link */
 .read-more {
-    /* color: rgb(59, 157, 135);  Blue color for the link */
-    color: #238e22;  /* Blue color for the link */
+    color: #0f8e2f;  /* Blue color for the link */
     font-size: 1.1rem;
     text-decoration: none;
     font-weight: bold;
@@ -385,8 +379,7 @@
 /* Hover Effect on Read More */
 .read-more:hover {
     text-decoration: underline;
-    /* color: rgb(59, 157, 135);  Darker blue on hover */
-    color: #238e22;
+    color: #0f8e2f;  /* Darker blue on hover */
 }
 
 .read-more::after {
@@ -394,8 +387,7 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    /* background-color: rgb(59, 157, 135); */
-    background-color: #238e22;
+    background-color: #0f8e2f;
     bottom: -5px;
     left: 0;
     transition: width 0.3s ease;
@@ -437,48 +429,68 @@
 }
 
 .contact-form {
-    flex: 0 0 40%;  /* Makes the form take 40% of the width */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    width: 100%; /* Full width of the form */
+    max-width: 500px; /* Maximum width for the form */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Padding inside the form */
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .contact-form label {
-    font-weight: bold;
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold text for labels */
+    color: #333; /* Dark text color */
+    text-align: left; /* Align text to the left */
+}
+
+.contact-form label.email,
+.contact-form label.message {
+    color: #0f8e2f; /* Highlight color for Email and Message labels */
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px; /* Padding inside the input and textarea */
+    font-size: 1rem; /* Base font size */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 15px; /* Space below each input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effects */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #0f8e2f; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(15, 142, 47, 0.5); /* Add shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+.contact-form textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px; /* Minimum height for the textarea */
 }
 
 .contact-button {
-    padding: 10px 20px;
-    /* background-color: rgb(59, 157, 135); */
-    background-color: #238e22;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    padding: 12px 20px; /* Increased padding for better touch targets */
+    background-color: #0f8e2f; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Base font size */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for background color and transform */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .contact-button:hover {
-    /* background-color: rgb(59, 157, 135); */
-    background-color: #238e22;
+    background-color: #0d7a24; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-.icon-card p{
-    color: #238e22;
-}
-
-
-
-.appointment-button {
-    background: #238e22;
-color: white;
-border: white;
+.contact-button:active {
+    transform: translateY(0); /* Reset lift effect on click */
 }
