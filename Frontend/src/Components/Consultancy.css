@@ -1,0 +1,249 @@
+/* Body Styles */
+.thisbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0; /* Remove default margin */
+}
+
+/* Intro Section */
+.intro-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5; /* Match with overall theme */
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  text-align: center; /* Align text in the center */
+}
+
+.intro-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.intro-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.intro-content p {
+  font-size: 1.2em;
+  color: hsla(0, 80%, 4%, 0.43);
+  line-height: 1.6;
+}
+
+.intro-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  animation: slideIn 1s ease-out forwards;
+}
+
+.svg-image {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.svg-image:hover {
+  transform: translateX(10px) translateY(-5px);
+  opacity: 0.9;
+}
+
+/* Animation for smooth entry */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Consultancy Section */
+.consultancy-container {
+  display: flex;
+  justify-content: space-between; /* Left and right alignment */
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.consultancy-left, .consultancy-right {
+  width: 40%; /* Reduced width to 40% */
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pageheading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.6em;
+  color: #333;
+}
+
+/* Form Grid */
+.form-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.form-half {
+  flex: 1;
+  min-height: 300px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #ffb400;
+  box-shadow: 0 0 5px #f3b219;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #ffb400;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #e6a800;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+  .thisbody {
+    padding: 10px;
+  }
+
+  .intro-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .intro-content {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .svg-image {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .consultancy-container {
+    flex-direction: column; /* Stack the forms vertically on smaller screens */
+    gap: 20px;
+  }
+
+  .consultancy-left, .consultancy-right {
+    width: 100%; /* Full width for forms on small screens */
+  }
+
+  .form-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-half {
+    min-height: auto;
+  }
+
+  .pageheading {
+    font-size: 1.4em;
+  }
+}
+
+/* General Form Responsiveness */
+@media (max-width: 480px) {
+  .pageheading {
+    font-size: 1.2em;
+  }
+
+  .form-half {
+    min-height: auto;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+  }
+}
+
+.videocalling{
+  width:80vw;
+  height: 5vh;
+  border:1px solid green;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 600;
+  margin-left: 130px;
+  color: rgb(6, 25, 101);
+  border-radius: 25px;
+  background:#0cbdc0;
+  align-self: end;
+}
+.videocalling:hover{
+  background: #218e10;
+  color: white;
+  font-size: 23px;
+}
